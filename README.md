@@ -1,5 +1,5 @@
 # AndroidDevelopAssistant
-android 开发助手，仓库主要是维护android-library
+android 开发助手，仓库只维护android-library
 库文件，此仓库包含库文件的源代码
 
 集成步骤：
