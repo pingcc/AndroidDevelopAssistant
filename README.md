@@ -1,5 +1,6 @@
 # AndroidDevelopAssistant
-android 开发助手，集成可实现快速开发
+android 开发助手，仓库主要是维护android-library
+库文件，此仓库包含库文件的源代码
 
 集成步骤：
 1.在根目录的build.gradle中添加仓库下载地址
