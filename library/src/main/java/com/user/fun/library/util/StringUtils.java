@@ -4,7 +4,9 @@ import android.text.TextUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static android.text.TextUtils.isEmpty;
@@ -38,7 +40,7 @@ public class StringUtils {
     public static String str = "";
 
 
-    public static int StringPraseInt(String s) {
+    public static int StringParseInt(String s) {
         try {
             int a = Integer.parseInt(s);
             return a;
@@ -49,7 +51,7 @@ public class StringUtils {
         return 0;
     }
 
-    public static long StringPraseLong(String s) {
+    public static long StringParseLong(String s) {
         try {
             long a = Long.parseLong(s);
             return a;
@@ -60,10 +62,10 @@ public class StringUtils {
         return 0;
     }
 
-    public static Double StringPraseDouble(String s) {
+    public static Double StringParseDouble(String s) {
         if (s.equals("."))
             return 0d;
-        if(!TextUtils.isEmpty(s)){
+        if (!TextUtils.isEmpty(s)) {
             try {
                 double a = Double.valueOf(s);
                 return a;
@@ -124,5 +126,16 @@ public class StringUtils {
         return result;
     }
 
+    /**
+     * String 转 list
+     */
+    public static List<String> strParseList(String str, String character) {
+        if (isEmpty(character)) {
+            return null;
+        }
+        String[] strs = str.split(character);
+
+        return Arrays.asList(strs);
+    }
 
 }

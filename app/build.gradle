@@ -33,9 +33,6 @@ android {
         }
     }
 }
-ext {
-    butterknife = "8.6.0"
-}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
