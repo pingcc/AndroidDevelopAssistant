@@ -16,7 +16,7 @@ android 开发助手，仓库只维护android-library
 2.在项目中依赖jar包
    
    dependencies {
-	        implementation 'com.github.pingcc:AndroidDevelopAssistant:1.0.2'
+	        implementation 'com.github.pingcc:AndroidDevelopAssistant:version'
 	        }
 	
   即可集成达到快速开发android项目
