@@ -84,8 +84,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
         if (mCrashHandlerAction != null)
             mCrashHandlerAction.handleExceptionExecuteAfterAppAction();
-        else
-            exitApp();
 //        restartApp();
     }
 

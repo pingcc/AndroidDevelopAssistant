@@ -9,6 +9,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.user.fun.library.functions.CrashHandlerAction;
 import com.user.fun.library.global.BaseApp;
 import com.user.fun.library.global.CrashHandler;
+import com.user.fun.library.helper.ActivityManager;
 
 
 /**
@@ -37,23 +38,34 @@ public class App extends BaseApp {
                 return BuildConfig.DEBUG;
             }
         });
+
+        if (!BuildConfig.DEBUG) { //正式环境打包自定义处理异常
+            initCrash();
+        }
+        initApplicationComponent();
+    }
+
+    private void initCrash() {
         //初始化全局捕获异常
         CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
         crashHandler.setCrashHandlerAction(new CrashHandlerAction() {
             @Override
             public void handleExceptionExecuteAfterSendReport(String fileName) {
-
+                /**捕获的异常信息的日志文件发送给服务端*/
+                //  MobclickAgent.reportError(mContext, saveCrashInfo2File(ex));
             }
 
             @Override
-            public void handleExceptionExecuteAfterAppAction() {
-
+            public void handleExceptionExecuteAfterAppAction() { //退出app
+                ActivityManager.getActivityManager().popAllActivityExceptOne();//清除所有栈
+//                  android.os.Process.killProcess(android.os.Process.myPid());  //获取PID
+                System.exit(1);   //常规java、c#的标准退出法，返回值为0代表正常退出
             }
         });
-        crashHandler.init(getApplicationContext());
 
-        initApplicationComponent();
     }
+
     /**
      * 初始化dagger 类注解工具
      */
