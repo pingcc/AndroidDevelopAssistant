@@ -56,7 +56,6 @@ public class StringUtils {
             long a = Long.parseLong(s);
             return a;
         } catch (NumberFormatException e) {
-
             e.printStackTrace();
         }
         return 0;
